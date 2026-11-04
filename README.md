@@ -7,7 +7,7 @@ Next.js 16 (App Router, TypeScript) landing page for a marketing, development an
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build && npm start   # production
+npm run build      # static site written to out/
 ```
 
 Optional: copy `.env.example` to `.env.local` and fill in:
@@ -16,7 +16,7 @@ Optional: copy `.env.example` to `.env.local` and fill in:
 | --- | --- |
 
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | Digits with country code, e.g. `923001234567`. Overrides the default WhatsApp number (923370411579) used by every CTA. |
-| `NEXT_PUBLIC_SITE_URL` | Your live domain, so social share previews use absolute URLs. |
+| `NEXT_PUBLIC_SITE_URL` | Your live domain, e.g. `https://elite-glow-labs.netlify.app`, so social share previews use absolute URLs. Set it in Netlify → Environment variables. |
 
 ## Structure
 
@@ -40,6 +40,8 @@ public/media/reels/ reel MP4s
 
 ## Deploy
 
-**Netlify:** import the repo. `netlify.toml` sets the build command (`npm run build`), publish dir (`.next`) and Node 22. Netlify's Next.js runtime is applied automatically.
+The site is a **static export** (`output: "export"`): `npm run build` writes plain HTML/CSS/JS to `out/`, with no server needed.
+
+**Netlify:** import the repo. `netlify.toml` sets the build command (`npm run build`), publish dir (`out`), Node 22 and caching headers.
 
 **Vercel:** import the repo. No extra config needed. Add the env vars in Vercel → Settings → Environment Variables.

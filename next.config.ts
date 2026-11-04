@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
+/**
+ * Fully static export: `next build` writes plain HTML/CSS/JS to `out/`,
+ * which any static host (Netlify, Vercel, GitHub Pages, cPanel) can serve.
+ * Images keep their blur placeholders; they are served as the optimised JPGs in src/assets.
+ */
 const nextConfig: NextConfig = {
-  images: { formats: ["image/avif", "image/webp"] },
-  async headers() {
-    return [
-      {
-        source: "/media/:path*",
-        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
-      },
-    ];
-  },
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: true,
 };
 
 export default nextConfig;
