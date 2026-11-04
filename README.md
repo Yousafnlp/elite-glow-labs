@@ -40,4 +40,6 @@ public/media/reels/ reel MP4s
 
 ## Deploy
 
-Push to GitHub and import into Vercel. No extra config needed. Add the env vars in Vercel → Settings → Environment Variables.
+**Netlify:** import the repo. `netlify.toml` sets the build command (`npm run build`), publish dir (`.next`) and Node 22. Netlify's Next.js runtime is applied automatically.
+
+**Vercel:** import the repo. No extra config needed. Add the env vars in Vercel → Settings → Environment Variables.
